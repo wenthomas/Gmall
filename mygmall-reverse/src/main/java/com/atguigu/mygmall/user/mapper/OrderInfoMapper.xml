@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mygmall.user.mapper.OrderInfoMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.mygmall.user.bean.OrderInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="consignee" jdbcType="VARCHAR" property="consignee" />
+    <result column="consignee_tel" jdbcType="VARCHAR" property="consigneeTel" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="payment_way" jdbcType="VARCHAR" property="paymentWay" />
+    <result column="delivery_address" jdbcType="VARCHAR" property="deliveryAddress" />
+    <result column="order_comment" jdbcType="VARCHAR" property="orderComment" />
+    <result column="out_trade_no" jdbcType="VARCHAR" property="outTradeNo" />
+    <result column="trade_body" jdbcType="VARCHAR" property="tradeBody" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+    <result column="process_status" jdbcType="VARCHAR" property="processStatus" />
+    <result column="tracking_no" jdbcType="VARCHAR" property="trackingNo" />
+    <result column="parent_order_id" jdbcType="BIGINT" property="parentOrderId" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from order_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.mygmall.user.bean.OrderInfo">
+    insert into order_info (id, consignee, consignee_tel, 
+      total_amount, order_status, user_id, 
+      payment_way, delivery_address, order_comment, 
+      out_trade_no, trade_body, create_time, 
+      expire_time, process_status, tracking_no, 
+      parent_order_id, img_url)
+    values (#{id,jdbcType=BIGINT}, #{consignee,jdbcType=VARCHAR}, #{consigneeTel,jdbcType=VARCHAR}, 
+      #{totalAmount,jdbcType=DECIMAL}, #{orderStatus,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, 
+      #{paymentWay,jdbcType=VARCHAR}, #{deliveryAddress,jdbcType=VARCHAR}, #{orderComment,jdbcType=VARCHAR}, 
+      #{outTradeNo,jdbcType=VARCHAR}, #{tradeBody,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{expireTime,jdbcType=TIMESTAMP}, #{processStatus,jdbcType=VARCHAR}, #{trackingNo,jdbcType=VARCHAR}, 
+      #{parentOrderId,jdbcType=BIGINT}, #{imgUrl,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.mygmall.user.bean.OrderInfo">
+    update order_info
+    set consignee = #{consignee,jdbcType=VARCHAR},
+      consignee_tel = #{consigneeTel,jdbcType=VARCHAR},
+      total_amount = #{totalAmount,jdbcType=DECIMAL},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      payment_way = #{paymentWay,jdbcType=VARCHAR},
+      delivery_address = #{deliveryAddress,jdbcType=VARCHAR},
+      order_comment = #{orderComment,jdbcType=VARCHAR},
+      out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      trade_body = #{tradeBody,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      process_status = #{processStatus,jdbcType=VARCHAR},
+      tracking_no = #{trackingNo,jdbcType=VARCHAR},
+      parent_order_id = #{parentOrderId,jdbcType=BIGINT},
+      img_url = #{imgUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, consignee, consignee_tel, total_amount, order_status, user_id, payment_way, 
+    delivery_address, order_comment, out_trade_no, trade_body, create_time, expire_time, 
+    process_status, tracking_no, parent_order_id, img_url
+    from order_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, consignee, consignee_tel, total_amount, order_status, user_id, payment_way, 
+    delivery_address, order_comment, out_trade_no, trade_body, create_time, expire_time, 
+    process_status, tracking_no, parent_order_id, img_url
+    from order_info
+  </select>
+</mapper>

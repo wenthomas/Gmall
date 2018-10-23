@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mygmall.user.mapper.SpuPosterMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.mygmall.user.bean.SpuPoster">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="spu_id" jdbcType="BIGINT" property="spuId" />
+    <result column="img_name" jdbcType="VARCHAR" property="imgName" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from spu_poster
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.mygmall.user.bean.SpuPoster">
+    insert into spu_poster (id, spu_id, img_name, 
+      img_url)
+    values (#{id,jdbcType=BIGINT}, #{spuId,jdbcType=BIGINT}, #{imgName,jdbcType=VARCHAR}, 
+      #{imgUrl,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.mygmall.user.bean.SpuPoster">
+    update spu_poster
+    set spu_id = #{spuId,jdbcType=BIGINT},
+      img_name = #{imgName,jdbcType=VARCHAR},
+      img_url = #{imgUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, spu_id, img_name, img_url
+    from spu_poster
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, spu_id, img_name, img_url
+    from spu_poster
+  </select>
+</mapper>

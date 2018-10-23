@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.atguigu.mygmall</groupId>
+    <artifactId>MyGmall</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>mygmall-reverse</module>
+        <module>mygmal-api</module>
+        <module>mygmall-parent</module>
+        <module>mygmall-common-util</module>
+        <module>mygmall-service-util</module>
+        <module>mygmall-web-util</module>
+    </modules>
+
+
+</project>

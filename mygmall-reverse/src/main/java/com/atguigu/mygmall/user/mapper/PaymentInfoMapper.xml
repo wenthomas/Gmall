@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mygmall.user.mapper.PaymentInfoMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.mygmall.user.bean.PaymentInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="out_trade_no" jdbcType="VARCHAR" property="outTradeNo" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="alipay_trade_no" jdbcType="VARCHAR" property="alipayTradeNo" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="payment_status" jdbcType="VARCHAR" property="paymentStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="callback_time" jdbcType="TIMESTAMP" property="callbackTime" />
+    <result column="callback_content" jdbcType="VARCHAR" property="callbackContent" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from payment_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.mygmall.user.bean.PaymentInfo">
+    insert into payment_info (id, out_trade_no, order_id, 
+      alipay_trade_no, total_amount, subject, 
+      payment_status, create_time, callback_time, 
+      callback_content)
+    values (#{id,jdbcType=INTEGER}, #{outTradeNo,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
+      #{alipayTradeNo,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, #{subject,jdbcType=VARCHAR}, 
+      #{paymentStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{callbackTime,jdbcType=TIMESTAMP}, 
+      #{callbackContent,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.mygmall.user.bean.PaymentInfo">
+    update payment_info
+    set out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      alipay_trade_no = #{alipayTradeNo,jdbcType=VARCHAR},
+      total_amount = #{totalAmount,jdbcType=DECIMAL},
+      subject = #{subject,jdbcType=VARCHAR},
+      payment_status = #{paymentStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      callback_time = #{callbackTime,jdbcType=TIMESTAMP},
+      callback_content = #{callbackContent,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, out_trade_no, order_id, alipay_trade_no, total_amount, subject, payment_status, 
+    create_time, callback_time, callback_content
+    from payment_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, out_trade_no, order_id, alipay_trade_no, total_amount, subject, payment_status, 
+    create_time, callback_time, callback_content
+    from payment_info
+  </select>
+</mapper>

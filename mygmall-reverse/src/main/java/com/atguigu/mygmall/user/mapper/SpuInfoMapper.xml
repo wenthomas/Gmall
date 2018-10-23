@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mygmall.user.mapper.SpuInfoMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.mygmall.user.bean.SpuInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="spu_name" jdbcType="VARCHAR" property="spuName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="catalog3_id" jdbcType="BIGINT" property="catalog3Id" />
+    <result column="tm_id" jdbcType="BIGINT" property="tmId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from spu_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.mygmall.user.bean.SpuInfo">
+    insert into spu_info (id, spu_name, description, 
+      catalog3_id, tm_id)
+    values (#{id,jdbcType=BIGINT}, #{spuName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{catalog3Id,jdbcType=BIGINT}, #{tmId,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.mygmall.user.bean.SpuInfo">
+    update spu_info
+    set spu_name = #{spuName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      catalog3_id = #{catalog3Id,jdbcType=BIGINT},
+      tm_id = #{tmId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, spu_name, description, catalog3_id, tm_id
+    from spu_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, spu_name, description, catalog3_id, tm_id
+    from spu_info
+  </select>
+</mapper>
